@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1991</title>
+    <meta name="description" content="中国著名编剧" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<body>
+
+<div>
+    支持10位数字
+    <input type="text" class="" id="xiaoxie" placeholder="小写" style="width:300px;font-size:20px;">
+    <button type="submit" class="btn btn-primary" id="switch">转换成大写</button>
+    <input type="text" class="form-control" id="daxie" placeholder="人民币大写" style="width:400px;font-size:20px;">
+</div>
+
+</body>
+</html>
+
+<script>
+    $("#switch").click(function(){
+        var aa = $("#xiaoxie").val();
+        if((/^(\+|-)?\d+$/.test( aa ))){
+            var url = '/math.php?xiaoxie='+aa;
+            $.get(url,function(data,status){
+                $("#daxie").val(data);
+            });
+        }else{
+            $("#daxie").val('请输入合法的数字');
+        }
+    });
+</script>
